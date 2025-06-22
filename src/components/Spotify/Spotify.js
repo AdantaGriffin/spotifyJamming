@@ -5,11 +5,13 @@ let redirectUrl = "http://127.0.0.1:3000/callback";
 const Spotify = {
 
     getAccessToken(){
+        
         if(accessToken){
             return accessToken;
         }
         const tokenInURL = window.location.href.match(/access_token=([^&]*)/);
         const expiryTime = window.location.href.match(/expires_in=([^&]*)/);
+
         if( tokenInURL && expiryTime){
             accessToken = tokenInURL[1];
             const expiresIn = Number(expiryTime[1]);
@@ -34,7 +36,7 @@ const Spotify = {
             return jsonResponse.tracks.items.map((t) => ({
                 id: t.id,
                 name: t.name,
-                artist: t.artist[0],
+                artist: t.artist[0].name,
                 album: t.album.name,
                 uri: t.uri,
             }))
