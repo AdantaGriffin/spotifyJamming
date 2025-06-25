@@ -1,6 +1,6 @@
 let accessToken = "";
 let clientId = "d198b429a7924f6c8570fc173c191319";
-let redirectUrl = "https://jamonspot.surge.sh";
+let redirectUrl = "https://spotsjam.netlify.app/";
 
 
 const Spotify = {
