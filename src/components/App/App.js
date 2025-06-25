@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import styles from './App.module.css';
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
 import {Spotify} from '../Spotify/Spotify';
 
-function App () {
+function App() {
   const [searchResults, setSearchResults] = useState([
     {
       name: 'name 1',
@@ -19,14 +19,8 @@ function App () {
       album: 'album 2',
       id: 2
     },
-    {
-      name: 'name 3',
-      artist: 'artist 3',
-      album: 'album 3',
-      id: 3
-    },
   ]);
-  const [playlistName, setPlaylistName] = useState('ex playlist');
+  const [playlistName, setPlaylistName] = useState('ex. playlist');
   const [playlistTracks, setPlaylistTracks] = useState([
     {
       name: 'playlist name',
@@ -47,6 +41,7 @@ function App () {
       id: 33
     },
   ]);
+
   function addTrack(track){
     const exist = playlistTracks.find((t) => t.id === track.id);
     const newTrack = playlistTracks.concat(track);
@@ -56,24 +51,29 @@ function App () {
       setPlaylistTracks(newTrack)
     }
   };
+
   function removeTrack(track){
     const filtered = playlistTracks.filter((t) => t.id !== track.id);
     setPlaylistTracks(filtered);
-  };
+  }
+
   function updatePlaylistName(name){
     setPlaylistName(name);
-  };
+  }
+
   function savePlaylist(){
     const trackURIs = playlistTracks.map((t) => t.uri);
     Spotify.savePlaylist(playlistName, trackURIs).then(() => {
       updatePlaylistName("New Playlist");
       setPlaylistTracks([]);
     });
-  };
+  }
+
   function search(term){
     Spotify.search(term).then((result) => setSearchResults(result));
-    //console.log(term);
+    console.log(term);
   }
+  
     return (
         <div>
         <h1>
