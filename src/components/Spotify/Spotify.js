@@ -1,6 +1,6 @@
 let accessToken = "";
 let clientId = "d198b429a7924f6c8570fc173c191319";
-let redirectUrl = "http://127.0.0.1:3000/callback";
+let redirectUrl = "https://jamonspot.netlify.app/";
 
 
 const Spotify = {
