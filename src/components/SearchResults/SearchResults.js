@@ -8,7 +8,7 @@ function SearchResults(props) {
         {/* <!-- Add a TrackList component --> */}
         <TrackList 
           userSearchResults={props.userSearchResults}
-          isRemoval={false}
+          isRemoval={true}
           onAdd={props.onAdd}
         />
       </div>
